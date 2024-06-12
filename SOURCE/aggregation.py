@@ -77,7 +77,7 @@ votes = np.argmax(
 #print(votes)
 #print()
 # Load labels.
-_, labels = dataloader.load(np.arange(face_data_info["nb_test"]), category="test")
+_, labels = dataloader.load(np.arange(face_data_info["nb_test"]), method="test")
 
 # Compute and print accuracy.
 accuracy = (

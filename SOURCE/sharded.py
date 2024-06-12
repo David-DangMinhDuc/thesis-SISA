@@ -70,6 +70,6 @@ def fetchTestBatch(dataset, batch_size):
     limit = 0
     while limit <= datasetfile['nb_test'] - batch_size:
         limit += batch_size
-        yield dataloader.load(np.arange(limit - batch_size, limit), category='test')
+        yield dataloader.load(np.arange(limit - batch_size, limit), method='test')
     if limit < datasetfile['nb_test']:
-        yield dataloader.load(np.arange(limit, datasetfile['nb_test']), category='test')
+        yield dataloader.load(np.arange(limit, datasetfile['nb_test']), method='test')
