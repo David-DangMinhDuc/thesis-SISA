@@ -7,9 +7,9 @@
 - GVHD: PGS. TS. Lê Hoàng Thái
 - Sinh viên thực hiện:
 
-| Họ và tên  | MSSV  |
-|    ---     | ---   |
-| Đặng Minh Đức  | 20127136  |
-| Bùi Tiến Đạt  | 20127130  |
+| Họ và tên  | MSSV  | Chuyên ngành  |
+|    ---     | ---   | ---   |
+| Bùi Tiến Đạt  | 20127130  | Khoa học máy tính  |
+| Đặng Minh Đức  | 20127136  | Khoa học máy tính  |
 
-![Code ref](https://github.com/cleverhans-lab/machine-unlearning) 
+[Link code ref](https://github.com/cleverhans-lab/machine-unlearning) 
