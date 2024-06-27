@@ -118,6 +118,7 @@ if args.train:
         2 * args.slices / (args.slices + 1) * args.epochs / args.slices
     )
     loaded = False
+    numOfRetrainPoints = 0
     
     for sl in range(args.slices):
         # Get slice hash using sharded lib.
@@ -295,7 +296,14 @@ if args.train:
                         args.container, slice_hash, args.epochs - args.chkpt_interval
                     )
                 )
-
+                
+            numOfRetrainPoints += calcNumberRetrainedPoints(args.container,
+                                                            args.label,
+                                                            args.shard,
+                                                            args.batch_size,
+                                                            args.dataset,
+                                                            until=(sl + 1) * slice_size if sl < args.slices - 1 else None,
+                                                            )
             # If this is the last slice, create a symlink attached to it.
             if sl == args.slices - 1:
                 os.symlink(
@@ -310,7 +318,11 @@ if args.train:
                         args.container, args.shard, args.label
                     ),
                 )
-
+                
+                retrainPointsFile = open("containers/{}/shard-{}:{}.txt".format(args.container, args.shard, args.label), 'w')
+                retrainPointsFile.write(str(numOfRetrainPoints) + '\n')
+                retrainPointsFile.close()
+                
         elif sl == args.slices - 1:
             os.symlink(
                 "{}.pt".format(slice_hash),
@@ -330,7 +342,10 @@ if args.train:
                     ),
                 )
 
-
+            retrainPointsFile = open("containers/{}/shard-{}:{}.txt".format(args.container, args.shard, args.label), 'w')
+            retrainPointsFile.write(str(numOfRetrainPoints) + '\n')
+            retrainPointsFile.close()
+            
 if args.test:
     # Load model weights from shard checkpoint (last slice).
     model.load_state_dict(

@@ -73,3 +73,42 @@ def fetchTestBatch(dataset, batch_size):
         yield dataloader.load(np.arange(limit - batch_size, limit), method='test')
     if limit < datasetfile['nb_test']:
         yield dataloader.load(np.arange(limit, datasetfile['nb_test']), method='test')
+        
+def calcNumberRetrainedPoints(container, label, shard, batch_size, dataset, offset=0, until=None):
+    '''
+    Calculate the number of points that be retrained when unlearning point(s) appear(s) on each slice
+    '''
+    shards = np.load('containers/{}/splitfile.npy'.format(container), allow_pickle=True)
+    requests = np.load('containers/{}/requestfile:{}.npy'.format(container, label), allow_pickle=True)
+    
+    with open(dataset) as f:
+        datasetfile = json.loads(f.read())
+    dataloader = importlib.import_module('.'.join(dataset.split('/')[:-1] + [datasetfile['dataloader']]))
+    if until == None or until > shards[shard].shape[0]:
+        until = shards[shard].shape[0]
+
+    limit = offset
+    numOfRetrainPoints = 0
+    numPoints = 0
+    isRetrain = False
+
+    while limit <= until - batch_size:
+        limit += batch_size
+        indices = np.setdiff1d(shards[shard][limit-batch_size:limit], requests[shard]) 
+        
+        if indices.shape[0] != shards[shard][limit-batch_size:limit].shape[0]: # If it is result of D / {d_u}, there are retrained points
+            isRetrain = True
+
+        numPoints += indices.shape[0]
+    if limit < until:
+        indices = np.setdiff1d(shards[shard][limit:until], requests[shard]) 
+        
+        if indices.shape[0] != shards[shard][limit:until].shape[0]: # If it is result of D / {d_u}, there are retrained points
+            isRetrain = True
+                
+        numPoints += indices.shape[0]
+
+    if isRetrain == True:
+        numOfRetrainPoints += numPoints
+
+    return numOfRetrainPoints
