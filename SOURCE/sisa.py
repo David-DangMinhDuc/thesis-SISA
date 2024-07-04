@@ -107,7 +107,7 @@ loss_fn = CrossEntropyLoss()
 if args.optimizer == "adam":
     optimizer = Adam(model.parameters(), lr=args.learning_rate)
 elif args.optimizer == "sgd":
-    optimizer = SGD(model.parameters(), lr=args.learning_rate)
+    optimizer = SGD(model.parameters(), lr=args.learning_rate, momentum=0.9, weight_decay=0.00001)
 else:
     raise "Unsupported optimizer"
 
