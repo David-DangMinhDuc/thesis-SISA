@@ -27,9 +27,9 @@ X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.
 train_trans = transforms.Compose([
     transforms.ToPILImage(),
     transforms.Resize(size=(224,224)),
-    #transforms.RamdomRotation((0,15)),
-    #transform.RandomAffine(degrees=0, translate=(5/92,5/112)),
-    #transforms.RandomHorizontalFlip(),
+    transforms.RamdomRotation((0,15)),
+    transforms.RandomAffine(degrees=0, translate=(5/92,5/112)),
+    transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
                          std=[0.1860, 0.1860, 0.1860])
@@ -44,8 +44,8 @@ test_trans = transforms.Compose([
 ])
 
 face_data = X_train, X_test, y_train, y_test
-train_data = orlDataset(face_data, train_trans, method = True)
-test_data = orlDataset(face_data, test_trans, method = False)
+train_data = orlDataset(face_data, train_trans, isTrain = True)
+test_data = orlDataset(face_data, test_trans, isTrain = False)
 
 
 if not os.path.exists('orl_info'):

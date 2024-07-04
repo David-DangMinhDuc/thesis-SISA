@@ -2,17 +2,17 @@ import torch
 import torch.utils.data as data
 
 class orlDataset(data.Dataset):
-  def __init__(self, face_data, trans, method):
+  def __init__(self, face_data, trans, isTrain):
     self.face_data = face_data
     self.transform = trans
-    self.method = method
+    self.isTrain = isTrain
   def __len__(self):
-    if self.method == True:
+    if self.isTrain == True:
       return len(self.face_data[0]) # self.face_data[2] is correct too
     else:
       return len(self.face_data[1]) # self.face_data[3] is correct too
   def __getitem__(self, img_dir_idx):
-    if self.method == True:
+    if self.isTrain == True:
       train_image = self.face_data[0][img_dir_idx]
       train_label = self.face_data[2][img_dir_idx]
       train_image_trans = self.transform(train_image)
