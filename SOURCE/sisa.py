@@ -68,11 +68,20 @@ parser.add_argument(
     type=int,
     help="Interval (in epochs) between two chkpts, -1 to disable chackpointing, default 1",
 )
+
 parser.add_argument(
     "--label",
     default="latest",
     help="Label to be used on simlinks and outputs, default latest",
 )
+
+parser.add_argument(
+    "--stt",
+    default=0,
+    type=int,
+    help="Number ordering of request",
+)
+
 args = parser.parse_args()
 
 # Import the architecture.
@@ -319,11 +328,18 @@ if args.train:
                     ),
                 )
                 
-                retrainPointsFile = open("containers/{}/shard-{}:{}.txt".format(args.container, args.shard, args.label), 'w')
+                retrainPointsFile = open("containers/{}/shard-{}:{}_{}.txt".format(args.container, args.shard, args.label, args.stt), 'w')
                 retrainPointsFile.write(str(numOfRetrainPoints) + '\n')
                 retrainPointsFile.close()
                 
         elif sl == args.slices - 1:
+            # Because shard-{}:{}.pt is existed, I have to remove this file first and then symlink 
+            os.remove(
+                "containers/{}/cache/shard-{}:{}.pt".format(
+                    args.container, args.shard, args.label
+                )
+            )
+            
             os.symlink(
                 "{}.pt".format(slice_hash),
                 "containers/{}/cache/shard-{}:{}.pt".format(
@@ -342,7 +358,7 @@ if args.train:
                     ),
                 )
 
-            retrainPointsFile = open("containers/{}/shard-{}:{}.txt".format(args.container, args.shard, args.label), 'w')
+            retrainPointsFile = open("containers/{}/shard-{}:{}_{}.txt".format(args.container, args.shard, args.label, args.stt), 'w')
             retrainPointsFile.write(str(numOfRetrainPoints) + '\n')
             retrainPointsFile.close()
             
