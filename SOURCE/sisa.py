@@ -334,11 +334,16 @@ if args.train:
                 
         elif sl == args.slices - 1:
             # Because shard-{}:{}.pt is existed, I have to remove this file first and then symlink 
-            os.remove(
+            if os.path.exists(
                 "containers/{}/cache/shard-{}:{}.pt".format(
                     args.container, args.shard, args.label
                 )
-            )
+            ):
+                os.remove(
+                    "containers/{}/cache/shard-{}:{}.pt".format(
+                        args.container, args.shard, args.label
+                    )
+                )
             
             os.symlink(
                 "{}.pt".format(slice_hash),
