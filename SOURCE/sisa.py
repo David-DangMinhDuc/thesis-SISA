@@ -3,7 +3,7 @@ import torch
 from torch.nn import CrossEntropyLoss
 from torch.optim import Adam, SGD
 from torch.nn.functional import one_hot
-from sharded import sizeOfShard, getShardHash, fetchShardBatch, fetchTestBatch
+from sharded import sizeOfShard, getShardHash, fetchShardBatch, fetchTestBatch, calcNumberRetrainedPoints
 import os
 from glob import glob
 from time import time
