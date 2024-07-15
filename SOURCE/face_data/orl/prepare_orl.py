@@ -16,6 +16,7 @@ for i in range(n_class):
     for j in range(10):
         image = cv2.imread('../../../DATASET/orl/s{}/{}.pgm'.format(i+1, j+1), cv2.IMREAD_GRAYSCALE)
         image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
+        image = cv2.resize(image, (224,224)) # resize to 224 x 224 first
         images.append(image)
         labels.append(i)
 
@@ -26,9 +27,8 @@ X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.
 
 train_trans = transforms.Compose([
     transforms.ToPILImage(),
-    transforms.Resize(size=(224,224)),
+    transforms.CenterCrop(size=(92,92)),
     transforms.RandomRotation((0,15)),
-    transforms.RandomAffine(degrees=0, translate=(5/92,5/112)),
     transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
@@ -37,7 +37,6 @@ train_trans = transforms.Compose([
 
 test_trans = transforms.Compose([
     transforms.ToPILImage(),
-    transforms.Resize(size=(224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
                          std=[0.1860, 0.1860, 0.1860])
