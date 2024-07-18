@@ -20,7 +20,7 @@ fi
 for j in {0..3}; do
     r=$((${j}*${shards}))
     shard_idx=0
-    acc=$(python aggregation.py --strategy uniform --container "${shards}" --shards "${shards}" --dataset face_data/orl/orl_info --baseline "${shard_idx}" --label "${j}")
+    acc=$(python aggregation.py --strategy uniform --container "${shards}" --shards "${shards}" --dataset face_data/orl/orl_info --baseline "${shard_idx}" --label "${r}")
     cat containers/"${shards}"/times/shard-*:"${r}".time > "containers/${shards}/times/times.tmp"
     time=$(python time.py --container "${shards}" | awk -F ',' '{print $1}')
     cat containers/"${shards}"/shard-*:"${r}"_"${j}".txt > "containers/${shards}/numOfRetrainPoints.tmp"
