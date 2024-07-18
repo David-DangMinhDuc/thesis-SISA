@@ -11,6 +11,6 @@ for i in $(seq 0 "$((${shards}-1))"); do
     for j in {0..15}; do
         echo "shard: $((${i}+1))/${shards}, requests: $((${j}+1))/16"
         r=$((${j}*${shards}/5))
-        python sisa.py --model orl_model --train --slices "${slices}" --dataset face_data/ar/ar_info --label "${r}" --epochs "${epochs}" --batch_size 16 --learning_rate 0.001 --optimizer adam --chkpt_interval 1 --container "${shards}" --shard "${i}" --stt "${j}"
+        python sisa.py --model ar_model --train --slices "${slices}" --dataset face_data/ar/ar_info --label "${r}" --epochs "${epochs}" --batch_size 16 --learning_rate 0.001 --optimizer adam --chkpt_interval 1 --container "${shards}" --shard "${i}" --stt "${j}"
     done
 done
