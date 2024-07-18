@@ -70,8 +70,8 @@ if not os.path.exists('ar_info'):
         "dataloader": "dataloader"
     }
     
-    with open("ar_info", "w") as orl_info_file:
-        json.dump(ar_info, orl_info_file)
+    with open("ar_info", "w") as ar_info_file:
+        json.dump(ar_info, ar_info_file)
 
 X_train = np.array([train_data.__getitem__(i)[0].numpy() for i in range(train_data.__len__())], dtype="float32")
 y_train = np.array([train_data.__getitem__(i)[1] for i in range(train_data.__len__())])
