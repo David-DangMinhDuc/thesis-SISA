@@ -28,7 +28,7 @@ for filename in os.listdir(dataset_path):
 images = np.array(images, dtype=np.uint8)
 labels = np.array(labels)
 
-n_class = np.max(labels) + 1 
+n_class = int(np.max(labels) + 1) 
 
 X_train, X_test, y_train, y_test = np.array([]), np.array([]), np.array([]), np.array([])
 for i in range(np.max(labels) + 1):
