@@ -29,7 +29,7 @@ train_trans = transforms.Compose([
     transforms.CenterCrop(size=(92,92)),
     transforms.RandomRotation((0,15)),
     transforms.RandomHorizontalFlip(),
-    transform.Resize(size=(224,224)),
+    transforms.Resize(size=(224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
                          std=[0.1860, 0.1860, 0.1860])
@@ -37,7 +37,7 @@ train_trans = transforms.Compose([
 
 test_trans = transforms.Compose([
     transforms.ToPILImage(),
-    transform.Resize(size=(224,224)),
+    transforms.Resize(size=(224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
                          std=[0.1860, 0.1860, 0.1860])
