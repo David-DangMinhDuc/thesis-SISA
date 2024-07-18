@@ -36,10 +36,13 @@ for i in range(np.max(labels) + 1):
     idx = np.where(labels == i)[0]
     img_tmp, label_tmp = images[idx], labels[idx]
     X_train_tmp, X_test_tmp, y_train_tmp, y_test_tmp = train_test_split(img_tmp, label_tmp, test_size=0.2)
-    X_train,X_test, y_train, y_test = np.vstack([X_train_tmp, X_train]), 
-    np.vstack([X_test_tmp, X_test]), 
-    np.vstack([y_train_tmp, y_train]), 
-    np.vstack([y_test_tmp, y_test])
+    if i == 0:
+        X_train, X_test, y_train, y_test = X_train_tmp, X_test_tmp, y_train_tmp, y_test_tmp
+    else:
+        X_train, X_test, y_train, y_test = np.append(X_train, X_train_tmp, axis=0), 
+        np.append(X_test, X_test_tmp, axis=0), 
+        np.append(y_train, y_train_tmp, axis=0), 
+        np.append(y_test, y_test_tmp, axis=0)
 
 train_trans = transforms.Compose([
         transforms.RandomResizedCrop(size = (227,227)),
