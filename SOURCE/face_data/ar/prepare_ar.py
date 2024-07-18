@@ -41,7 +41,7 @@ for i in range(np.max(labels) + 1):
         X_train, X_test, y_train, y_test = np.append(X_train, X_train_tmp, axis=0), np.append(X_test, X_test_tmp, axis=0), np.append(y_train, y_train_tmp, axis=0), np.append(y_test, y_test_tmp, axis=0)
 
 train_trans = transforms.Compose([
-        transforms.RandomResizedCrop(size = (227,227)),
+        transforms.ToPILImage(),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
         transforms.Normalize(mean = [0.485, 0.456, 0.406], 
@@ -49,6 +49,7 @@ train_trans = transforms.Compose([
     ])
 
 test_trans = transforms.Compose([
+        transforms.ToPILImage(),
         transforms.Resize((227,227)),
         transforms.ToTensor(),
         transforms.Normalize(mean = [0.485, 0.456, 0.406], 
