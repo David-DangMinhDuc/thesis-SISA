@@ -10,14 +10,13 @@ dataset_path = '../../../DATASET/ar'
 images = []
 labels = []
 
-# Duyệt qua các tập tin trong thư mục
 for filename in os.listdir(dataset_path):
     if filename.endswith('.jpg'):
         # Read face images
         image = cv2.imread(os.path.join(dataset_path, filename))
         images.append(image)
         
-        # Lấy ID từ tên tệp và gán làm nhãn # Extract ID from file name and assign to label
+        # Extract ID from file name and assign to label
         id_num = int(filename.split('-')[1])
         if filename.startswith('M'):
             label = id_num - 1
