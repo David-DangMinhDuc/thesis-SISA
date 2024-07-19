@@ -16,6 +16,6 @@ fi
 python distribution.py --shards "${shards}" --distribution uniform --container "${shards}" --dataset face_data/orl/orl_info --label 0
 
 for j in {1..3}; do
-    r=$((${j}*${shards}))
-    python distribution.py --requests "${r}" --distribution uniform --container "${shards}" --dataset face_data/orl/orl_info --label "${r}"
+    r=1#$((${j}*${shards}))
+    python distribution.py --requests "${r}" --distribution uniform --container "${shards}" --dataset face_data/orl/orl_info --label "${j}"
 done
