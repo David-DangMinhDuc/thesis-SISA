@@ -18,7 +18,7 @@ if [[ ! -f general-report.csv ]]; then
 fi
 
 for j in {0..3}; do
-    r=1#$((${j}*${shards}))
+    r=$((1))#$((${j}*${shards}))
     shard_idx=0
     acc=$(python aggregation.py --strategy uniform --container "${shards}" --shards "${shards}" --dataset face_data/orl/orl_info --baseline "${shard_idx}" --label "${j}")
     cat containers/"${shards}"/times/shard-*:"${j}".time > "containers/${shards}/times/times.tmp"
