@@ -28,7 +28,7 @@ train_trans = transforms.Compose([
     transforms.ToPILImage(),
     #transforms.CenterCrop(size=(92,92)),
     #transforms.RandomRotation((0,15)),
-    #transforms.RandomHorizontalFlip(),
+    transforms.RandomHorizontalFlip(),
     transforms.Resize(size=(224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
