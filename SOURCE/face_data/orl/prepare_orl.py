@@ -26,8 +26,8 @@ X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.
 
 train_trans = transforms.Compose([
     transforms.ToPILImage(),
-    #transforms.CenterCrop(size=(92,92)),
-    #transforms.RandomRotation((0,15)),
+    transforms.CenterCrop(size=(92,92)),
+    transforms.RandomRotation((0,15)),
     transforms.RandomHorizontalFlip(),
     transforms.Resize(size=(224,224)),
     transforms.ToTensor(),
@@ -37,6 +37,7 @@ train_trans = transforms.Compose([
 
 test_trans = transforms.Compose([
     transforms.ToPILImage(),
+    transforms.CenterCrop(size=(92,92)),
     transforms.Resize(size=(224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.5622, 0.5622, 0.5622], 
