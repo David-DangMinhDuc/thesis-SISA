@@ -22,7 +22,7 @@ for filename in os.listdir(dataset_path):
         #    label = id_num - 1
         #elif filename.startswith('W'):
         #    label = id_num + 49
-        labels.append(int(filename.split('-')[2]) - 1)#label)
+        labels.append(int(filename.split('-')[2].split('.')[0]) - 1)#label)
 
 # Convert normal array to numpy array
 images = np.array(images, dtype=np.uint8)
