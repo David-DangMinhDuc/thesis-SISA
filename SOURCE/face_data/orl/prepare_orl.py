@@ -19,13 +19,13 @@ for i in range(n_class):
         images.append(image)
         labels.append(i)
 
-images = np.array(images, dtype="float32")
+images = np.array(images, dtype=np.uint8)
 labels = np.array(labels)
 
 X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.2)
 
 train_trans = transforms.Compose([
-    #transforms.ToPILImage(),
+    transforms.ToPILImage(),
     #transforms.CenterCrop(size=(92,92)),
     #transforms.RandomRotation((0,15)),
     #transforms.RandomHorizontalFlip(),
@@ -36,7 +36,7 @@ train_trans = transforms.Compose([
 ])
 
 test_trans = transforms.Compose([
-    #transforms.ToPILImage(),
+    transforms.ToPILImage(),
     #transforms.CenterCrop(size=(92,92)),
     transforms.Resize(size=(224,224)),
     transforms.ToTensor(),

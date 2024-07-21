@@ -25,7 +25,7 @@ for filename in os.listdir(dataset_path):
         labels.append(label)
 
 # Convert normal array to numpy array
-images = np.array(images, dtype="float32")
+images = np.array(images, dtype=np.uint8)
 labels = np.array(labels)
 
 n_class = int(np.max(labels) + 1) 
@@ -41,7 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.
 #        X_train, X_test, y_train, y_test = np.append(X_train, X_train_tmp, axis=0), np.append(X_test, X_test_tmp, axis=0), #np.append(y_train, y_train_tmp, axis=0), np.append(y_test, y_test_tmp, axis=0)
 
 train_trans = transforms.Compose([
-        #transforms.ToPILImage(),
+        transforms.ToPILImage(),
         #transforms.RandomHorizontalFlip(),
         transforms.Resize((227,227)),
         transforms.ToTensor(),
