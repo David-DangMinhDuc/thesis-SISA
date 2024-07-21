@@ -19,7 +19,7 @@ for i in range(n_class):
         images.append(image)
         labels.append(i)
 
-images = np.array(images, dtype=np.uint8)
+images = np.array(images, dtype="float32")
 labels = np.array(labels)
 
 X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.2)

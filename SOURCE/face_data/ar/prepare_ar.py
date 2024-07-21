@@ -25,7 +25,7 @@ for filename in os.listdir(dataset_path):
         labels.append(label)
 
 # Convert normal array to numpy array
-images = np.array(images, dtype=np.uint8)
+images = np.array(images, dtype="float32")
 labels = np.array(labels)
 
 n_class = int(np.max(labels) + 1) 
