@@ -18,7 +18,7 @@ if [[ ! -f general-report.csv ]]; then
 fi
 
 for j in {0..15}; do
-    r=$((${j}*${shards}/5))
+    r=$((${j}*${shards}/16))
     acc=$(python aggregation.py --strategy uniform --container "${shards}" --shards "${shards}" --dataset face_data/ar/ar_info --label "${r}")
     cat containers/"${shards}"/times/shard-*:"${r}".time > "containers/${shards}/times/times.tmp"
     time=$(python time.py --container "${shards}" | awk -F ',' '{print $1}')
