@@ -30,31 +30,31 @@ labels = np.array(labels)
 
 n_class = int(np.max(labels) + 1) 
 
-X_train, X_test, y_train, y_test = np.array([]), np.array([]), np.array([]), np.array([])
-for i in range(np.max(labels) + 1):
-    idx = np.where(labels == i)[0]
-    img_tmp, label_tmp = images[idx], labels[idx]
-    X_train_tmp, X_test_tmp, y_train_tmp, y_test_tmp = train_test_split(img_tmp, label_tmp, test_size=0.2)
-    if i == 0:
-        X_train, X_test, y_train, y_test = X_train_tmp, X_test_tmp, y_train_tmp, y_test_tmp
-    else:
-        X_train, X_test, y_train, y_test = np.append(X_train, X_train_tmp, axis=0), np.append(X_test, X_test_tmp, axis=0), np.append(y_train, y_train_tmp, axis=0), np.append(y_test, y_test_tmp, axis=0)
+X_train, X_test, y_train, y_test = train_test_split(images, labels, test_size=0.2)#np.array([]), np.array([]), np.array([]), np.array([])
+#for i in range(np.max(labels) + 1):
+#    idx = np.where(labels == i)[0]
+#    img_tmp, label_tmp = images[idx], labels[idx]
+#    X_train_tmp, X_test_tmp, y_train_tmp, y_test_tmp = train_test_split(img_tmp, label_tmp, test_size=0.2)
+#    if i == 0:
+#        X_train, X_test, y_train, y_test = X_train_tmp, X_test_tmp, y_train_tmp, y_test_tmp
+#    else:
+#        X_train, X_test, y_train, y_test = np.append(X_train, X_train_tmp, axis=0), np.append(X_test, X_test_tmp, axis=0), #np.append(y_train, y_train_tmp, axis=0), np.append(y_test, y_test_tmp, axis=0)
 
 train_trans = transforms.Compose([
         transforms.ToPILImage(),
-        transforms.RandomHorizontalFlip(),
+        #transforms.RandomHorizontalFlip(),
         transforms.Resize((227,227)),
         transforms.ToTensor(),
-        transforms.Normalize(mean = [0.485, 0.456, 0.406], 
-                            std = [0.229, 0.224, 0.225])
+        transforms.Normalize(mean = [0.4894, 0.4894, 0.4894], 
+                            std = [0.2281, 0.2281, 0.2281])
     ])
 
 test_trans = transforms.Compose([
         transforms.ToPILImage(),
         transforms.Resize((227,227)),
         transforms.ToTensor(),
-        transforms.Normalize(mean = [0.485, 0.456, 0.406], 
-                            std = [0.229, 0.224, 0.225])
+        transforms.Normalize(mean = [0.4894, 0.4894, 0.4894], 
+                            std = [0.2281, 0.2281, 0.2281])
     ])
 
 face_data = X_train, X_test, y_train, y_test
