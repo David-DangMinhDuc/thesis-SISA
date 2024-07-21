@@ -16,6 +16,6 @@ fi
 python distribution.py --shards "${shards}" --distribution uniform --container "${shards}" --dataset face_data/ar/ar_info --label 0
 
 for j in {1..15}; do
-    r=$((${j}*${shards}/16))
+    r=$((${j}*${shards}/5))
     python distribution.py --requests "${r}" --distribution uniform --container "${shards}" --dataset face_data/ar/ar_info --label "${r}"
 done
