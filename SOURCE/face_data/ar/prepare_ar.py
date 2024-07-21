@@ -17,12 +17,12 @@ for filename in os.listdir(dataset_path):
         images.append(image)
         
         # Extract ID from file name and assign to label
-        id_num = int(filename.split('-')[1])
-        if filename.startswith('M'):
-            label = id_num - 1
-        elif filename.startswith('W'):
-            label = id_num + 49
-        labels.append(label)
+        #id_num = int(filename.split('-')[1])
+        #if filename.startswith('M'):
+        #    label = id_num - 1
+        #elif filename.startswith('W'):
+        #    label = id_num + 49
+        labels.append(int(filename.split('-')[2]) - 1)#label)
 
 # Convert normal array to numpy array
 images = np.array(images, dtype=np.uint8)
