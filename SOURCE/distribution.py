@@ -51,13 +51,8 @@ if args.shards != None:
             ],
         )
         
-        print("Partition: ", partition)
-       
-        #for i in range(args.shards):
-        #    np.save("containers/{}/splitfile_{}.npy".format(args.container, i), partition[i])
         np.save("containers/{}/splitfile.npy".format(args.container), np.array(partition, dtype=object), allow_pickle=True)
         requests = np.array([[] for _ in range(args.shards)])
-        print("Requests: ", requests)
 
         np.save(
             "containers/{}/requestfile:{}.npy".format(args.container, args.label),
@@ -158,12 +153,8 @@ if args.shards != None:
                 )
 
             # Generate splitfile and empty request file.
-            #for i in range(args.shards):
-            #    np.save("containers/{}/splitfile_{}.npy".format(args.container, i), partition[i])
-            print("shard is none: ", partition)
             np.save("containers/{}/splitfile.npy".format(args.container), np.array(partition, dtype=object), allow_pickle=True)
             requests = np.array([[] for _ in range(partition.shape[0])])
-            print("Requests when shard is none: ", requests)
             np.save(
                 "containers/{}/requestfile:{}.npy".format(args.container, args.label),
                 requests,
@@ -181,10 +172,6 @@ if args.requests != None:
         partition = np.load(
             "containers/{}/splitfile.npy".format(args.container), allow_pickle=True
         )
-        #partition = None
-        #if args.shards != None:
-        #    partition = np.array([np.load("containers/{}/splitfile_{}.npy".format(args.container, i), allow_pickle=True) 
-        #                         for i in range(args.shards)])
 
         # Randomly select points to be removed with given distribution at the dataset scale.
         if args.distribution.split(":")[0] == "exponential":
@@ -203,24 +190,12 @@ if args.requests != None:
             all_requests = np.random.pareto(a, (args.requests,))
         else:
             all_requests = np.random.randint(0, face_data_info["nb_train"], args.requests)
-            print(all_requests)
-        #if partition != None:
-            # Divide up the new requests among the shards.
-        #    for shard in range(partition.shape[0]):
-        #        requests.append(np.intersect1d(partition[shard], all_requests))
-
-            # Update requestfile.
-        #    np.save(
-        #        "containers/{}/requestfile:{}.npy".format(args.container, args.label),
-        #        np.array(requests),
-        #    )
         
         requests = []
         # Divide up the new requests among the shards.
         for shard in range(partition.shape[0]):
             requests.append(np.intersect1d(partition[shard], all_requests))
-        print(requests)
-        print()
+
         # Update requestfile.
         np.save(
             "containers/{}/requestfile:{}.npy".format(args.container, args.label),

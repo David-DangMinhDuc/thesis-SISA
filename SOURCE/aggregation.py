@@ -53,18 +53,12 @@ for filename in filenames:
         )
     )
 outputs = np.array(outputs)
-#print("Outputs: ")
-#print(outputs)
-#print()
 
 # Compute weight vector based on given strategy.
 if args.strategy == "uniform":
     weights = (
         1 / outputs.shape[0] * np.ones((outputs.shape[0],))
     )  # pylint: disable=unsubscriptable-object
-    #print("Weights: ")
-    #print(weights)
-    #print()
 elif args.strategy.startswith("models:"):
     models = np.array(args.strategy.split(":")[1].split(",")).astype(int)
     weights = np.zeros((outputs.shape[0],))  # pylint: disable=unsubscriptable-object
@@ -81,9 +75,7 @@ votes = np.argmax(
 ).reshape(
     (outputs.shape[1],)
 )  # pylint: disable=unsubscriptable-object
-#print("Votes: ")
-#print(votes)
-#print()
+
 # Load labels.
 _, labels = dataloader.load(np.arange(face_data_info["nb_test"]), method="test")
 
