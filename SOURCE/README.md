@@ -47,3 +47,7 @@ với s là số phân đoạn và r là số lát cắt
 | s = 10, r = 1  | 57.43  | 0.91  |
 
 với s là số phân đoạn và r là số lát cắt
+
+## Nguồn tham khảo
+- Các bài báo tham khảo được trình bày trong báo cáo
+- Code tham khảo: https://github.com/cleverhans-lab/machine-unlearning
