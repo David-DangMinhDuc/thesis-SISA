@@ -4,6 +4,11 @@ import os
 
 import argparse
 
+"""
+Tập tin này thể hiện quá trình phân chia dữ liệu thành s phân đoạn và khởi tạo các yêu cầu loại bỏ một cách ngẫu nhiên 
+dựa trên phân phối xác suất cụ thể. 
+"""
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--shards",

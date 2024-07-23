@@ -11,6 +11,10 @@ import json
 
 import argparse
 
+"""
+Tập tin này thể hiện tổng thế quá trình huấn luyện mô hình AlexNet hoặc VGG-16 khi kết hợp với phương pháp huấn luyện SISA. 
+"""
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--model", default="purchase", help="Architecture to use, default purchase"

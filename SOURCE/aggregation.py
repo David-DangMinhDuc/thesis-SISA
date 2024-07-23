@@ -6,7 +6,10 @@ import importlib
 import argparse
 
 """
-Mục đích của tập tin này là thu thập lại tham số đầu ra sau quá trình thử nghiệm mô hình trên tập dữ liệu thử nghiệm, sau đó chuyển các tham số đó thành các véc-tơ dự đoán và tính trung bình toàn bộ các véc-tơ dự đoán đó. Cuối cùng, chúng tôi chọn ra nhãn (đối tượng) có giá trị trung bình lớn nhất và dựa vào đó tính độ chính xác tổng thể của phương pháp đề xuất
+Mục đích của tập tin này là thu thập lại tham số đầu ra sau quá trình thử nghiệm mô hình trên tập dữ liệu thử nghiệm, 
+sau đó chuyển các tham số đó thành các véc-tơ dự đoán và tính trung bình toàn bộ các véc-tơ dự đoán đó. 
+Cuối cùng, chúng tôi chọn ra nhãn (đối tượng) có giá trị trung bình lớn nhất và dựa vào đó tính độ chính xác tổng thể 
+của phương pháp đề xuất (áp dụng phương pháp huấn luyện SISA vào các mô hình nhận dạng khuôn mặt (AlexNet và VGG-16)
 """
 
 parser = argparse.ArgumentParser()
