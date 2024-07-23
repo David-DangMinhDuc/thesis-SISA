@@ -5,14 +5,14 @@ import json
 
 def sizeOfShard(container, shard):
     '''
-    Returns the size (in number of points) of the shard before any unlearning request.
+    Trả về số lượng ảnh khuôn mặt của một phân đoạn trước khi xuất hiện các yêu cầu loại bỏ ảnh khuôn mặt
     '''
     shards = np.load('containers/{}/splitfile.npy'.format(container), allow_pickle=True)
     return shards[shard].shape[0]
 
 def realSizeOfShard(container, label, shard):
     '''
-    Returns the actual size of the shard (including unlearning requests).
+    Trả về số lượng ảnh khuôn mặt của một phân đoạn sau khi xuất hiện các yêu cầu loại bỏ ảnh khuôn mặt
     '''
     shards = np.load('containers/{}/splitfile.npy'.format(container), allow_pickle=True)
     requests = np.load('containers/{}/requestfile:{}.npy'.format(container, label), allow_pickle=True)
@@ -21,8 +21,9 @@ def realSizeOfShard(container, label, shard):
 
 def getShardHash(container, label, shard, until=None):
     '''
-    Returns a hash of the indices of the points in the shard lower than until
-    that are not in the requests (separated by :).
+    Trả về giá trị băm của các vị trí của các ảnh khuôn mặt trong một phân đoạn nhỏ hơn biến until 
+    (có thể hiểu là các vị trí của các ảnh khuôn mặt trên một lát cắt cụ thể) mà không có xuất hiện trong 
+    các yêu cầu loại bỏ (được chia cắt bởi :). 
     '''
     shards = np.load('containers/{}/splitfile.npy'.format(container), allow_pickle=True)
     requests = np.load('containers/{}/requestfile:{}.npy'.format(container, label), allow_pickle=True)
@@ -35,9 +36,8 @@ def getShardHash(container, label, shard, until=None):
 
 def fetchShardBatch(container, label, shard, batch_size, dataset, offset=0, until=None):
     '''
-    Generator returning batches of points in the shard that are not in the requests
-    with specified batch_size from the specified dataset
-    optionnally located between offset and until (slicing).
+    Trả về các lô chứa các ảnh khuôn mặt cần được huấn luyện, mỗi lô có kích thước là batch_size và
+    không chứa các ảnh khuôn mặt bị yêu cầu loại bỏ.
     '''
     shards = np.load('containers/{}/splitfile.npy'.format(container), allow_pickle=True)
     requests = np.load('containers/{}/requestfile:{}.npy'.format(container, label), allow_pickle=True)
@@ -60,8 +60,8 @@ def fetchShardBatch(container, label, shard, batch_size, dataset, offset=0, unti
 
 def fetchTestBatch(dataset, batch_size):
     '''
-    Generator returning batches of points from the specified test dataset
-    with specified batch_size.
+    Trả về các lô chứa các ảnh khuôn mặt cần được kiểm thử, mỗi lô có kích thước là batch_size và
+    không chứa các ảnh khuôn mặt bị yêu cầu loại bỏ.
     '''
     with open(dataset) as f:
         datasetfile = json.loads(f.read())
@@ -76,7 +76,7 @@ def fetchTestBatch(dataset, batch_size):
         
 def calcNumberRetrainedPoints(container, label, shard, batch_size, dataset, offset=0, until=None):
     '''
-    Calculate the number of points that be retrained when unlearning point(s) appear(s) on each slice
+    Tính số lượng ảnh khuôn mặt được huấn luyện lại khi gặp ảnh khuôn mặt bị người dùng yêu cầu loại bỏ
     '''
     shards = np.load('containers/{}/splitfile.npy'.format(container), allow_pickle=True)
     requests = np.load('containers/{}/requestfile:{}.npy'.format(container, label), allow_pickle=True)

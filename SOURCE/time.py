@@ -2,7 +2,7 @@ import pandas as pd
 
 import argparse
 
-# Compute stats based on the execution time (cumulated feed-forward + backprop.) of the shards
+# Thống kê thời gian huấn luyện lại trong trường hợp dữ liệu chia thành s phân đoạn 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--container', help="Name of the container")
