@@ -1,0 +1,5 @@
+nb_shards,nb_slices,nb_epochs,nb_requests,accuracy,retraining_time,nb_retrained_points
+5,2,20,0,0.9,6.31154561,0
+5,2,20,5,0.9375,7.965234756,251
+5,2,20,10,0.95,6.967865705,432
+5,2,20,15,0.9,6.880745173,428
