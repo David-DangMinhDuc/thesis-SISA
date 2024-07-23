@@ -21,4 +21,29 @@
     * Kiểm thử `S` shard cụ thể: `bash orl_predict.sh S` hoặc `bash ar_predict.sh S`
     * Tổng hợp các tham số đầu ra của từng phân đoạn và xuất ra kết quả trong file CSV: `bash orl_data.sh S R e` hoặc `bash ar_data.sh S R e` với `S` là số phân đoạn, `R` là số lát cắt và `e` là số kỷ nguyên. Nếu muốn đưa ra kết quả trong trường hợp `baseline` (tức là một phần của phân đoạn), chúng tôi sẽ chạy các file `bash orl_data_baseline.sh S R e` hoặc `bash ar_data_baseline.sh S R e`. Đối với bước này, chúng tôi muốn đưa ra thông tin về `S`, `R`, `e` nhằm phục vụ cho việc trực quan hóa dữ liệu nói riêng và báo cáo khóa luận nói chung. 
 
-[Link code ref](https://github.com/cleverhans-lab/machine-unlearning) 
+## Kết quả thực nghiệm
+
+### 1. Kết quả thực nghiệm dựa trên số phân đoạn
+![Biểu đồ thể hiện thời gian huấn luyện và độ chính xác dựa trên phân đoạn của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_shards.png)
+
+### 2. Kết quả thực nghiệm dựa trên số lát cắt
+![Biểu đồ thể hiện độ chính xác dựa trên số lát cắt của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_slices.png)
+
+### 3. Tốc độ huấn luyện
+#### 3.1. Tập dữ liệu AR Face Database
+
+| Trường hợp  | Thời gian huấn luyện  | Tốc độ huấn luyện  |
+|    ---     | ---   | ---   |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 230.93  | 1  |
+| s = 5, r = 1  | 185.25  | 1.25  |
+
+với s là số phân đoạn và r là số lát cắt
+#### 3.2. Tập dữ liệu ORL
+
+| Trường hợp  | Thời gian huấn luyện  | Tốc độ huấn luyện  |
+|    ---     | ---   | ---   |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 52.38  | 1  |
+| s = 5, r = 1  | 48.48  | 1.08  |
+| s = 10, r = 1  | 57.43  | 0.91  |
+
+với s là số phân đoạn và r là số lát cắt
