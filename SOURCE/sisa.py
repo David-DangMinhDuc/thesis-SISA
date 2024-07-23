@@ -12,7 +12,8 @@ import json
 import argparse
 
 """
-Tập tin này thể hiện tổng thế quá trình huấn luyện mô hình AlexNet hoặc VGG-16 khi kết hợp với phương pháp huấn luyện SISA. 
+Tập tin này thể hiện tổng thế quá trình huấn luyện mô hình AlexNet hoặc VGG-16 khi kết hợp với 
+phương pháp huấn luyện SISA. 
 """
 
 parser = argparse.ArgumentParser()
