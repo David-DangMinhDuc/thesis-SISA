@@ -34,17 +34,17 @@
 
 | Trường hợp  | Thời gian huấn luyện  | Tốc độ huấn luyện  |
 |    ---     | ---   | ---   |
-| Huấn luyện lại từ đầu (s = 1, r = 1)  | 230.93  | 1  |
-| s = 5, r = 1  | 185.25  | 1.25  |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 238.89  | 1  |
+| s = 5, r = 1  | 188.06  | 1.27  |
 
 với s là số phân đoạn và r là số lát cắt
 #### 3.2. Tập dữ liệu ORL
 
 | Trường hợp  | Thời gian huấn luyện  | Tốc độ huấn luyện  |
 |    ---     | ---   | ---   |
-| Huấn luyện lại từ đầu (s = 1, r = 1)  | 52.38  | 1  |
-| s = 5, r = 1  | 48.48  | 1.08  |
-| s = 10, r = 1  | 57.43  | 0.91  |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 54.9  | 1  |
+| s = 5, r = 1  | 52.42  | 1.05  |
+| s = 10, r = 1  | 56.89  | 0.97  |
 
 với s là số phân đoạn và r là số lát cắt
 
