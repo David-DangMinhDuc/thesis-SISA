@@ -21,9 +21,9 @@ for j in {0..15}; do
     r=$((${j}*${shards}/5))
     shard_idx=0
     acc=$(python aggregation.py --strategy uniform --container "${shards}" --shards "${shards}" --dataset face_data/ar/ar_info --baseline "${shard_idx}" --label "${r}")
-    cat containers/"${shards}"/times/shard-*:"${r}".time > "containers/${shards}/times/times.tmp"
+    cat containers/"${shards}"/times/shard-"${shard_idx}":"${r}".time > "containers/${shards}/times/times.tmp"
     time=$(python time.py --container "${shards}" | awk -F ',' '{print $1}')
-    cat containers/"${shards}"/shard-*:"${r}"_"${j}".txt > "containers/${shards}/numOfRetrainPoints.tmp"
+    cat containers/"${shards}"/shard-"${shard_idx}":"${r}"_"${j}".txt > "containers/${shards}/numOfRetrainPoints.tmp"
     numOfRetrainPoints=$(python numOfRetrainPoints.py --container "${shards}")
     echo "${shards},${slices},${epochs},${r},${acc},${time},${numOfRetrainPoints}" >> results/ar/report_a_part_of_"${shards}"_shards_"${slices}"_slices_"${epochs}"_epochs.csv
 done
