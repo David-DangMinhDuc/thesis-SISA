@@ -24,7 +24,11 @@
 ## Kết quả thực nghiệm
 
 ### 1. Kết quả thực nghiệm dựa trên số phân đoạn
+#### a. Thời gian huấn luyện và độ chính xác
 ![Biểu đồ thể hiện thời gian huấn luyện và độ chính xác dựa trên phân đoạn của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_shards.png)
+
+#### b. Số lượng ảnh khuôn mặt được huấn luyện lại
+![Biểu đồ thể hiện số lượng ảnh khuôn mặt được huấn luyện lại dựa trên phân đoạn của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_ret_pts.png)
 
 ### 2. Kết quả thực nghiệm dựa trên số lát cắt
 ![Biểu đồ thể hiện độ chính xác dựa trên số lát cắt của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_slices.png)
