@@ -17,9 +17,9 @@
 
 - Trước hết, chúng tôi sẽ chạy code trên file `face_data/orl/prepare_orl.py` hoặc `face_data/ar/prepare_ar.py` nhằm xuất ra dữ liệu sau khi chia thành tỉ lệ tùy thuộc vào tập dữ liệu (ORL: 80% train và 20% test, AR: 80% train và 20% test) phục vụ cho `dataloader.py`.
 - Tiếp đến, chúng tôi tiến hành thực nghiệm trên đề tài này theo từng bước sau:
-    * Khởi tạo 1 "container" với `S` phân đoạn cụ thể: `bash orl_init.sh S` hoặc `bash ar_init.sh S`
-    * Huấn luyện phương pháp SISA với `S` phân đoạn, `R` lát cắt và `e` kỷ nguyên cụ thể trong "container": `bash orl_train.sh S R e` hoặc `bash ar_train.sh S R e`
-    * Kiểm thử `S` shard cụ thể: `bash orl_predict.sh S` hoặc `bash ar_predict.sh S`
+    * Phân chia dữ liệu thành `S` phân đoạn cụ thể, khởi tạo số lượng yêu cầu loại bỏ dựa vào phân phối xác suất (trong đề tài này chúng tôi chỉ áp dụng SISA vào các mô hình nhận dạng khuôn mặt AlexNet và VGG-16 theo phân phối xác suất đều ("uniform")) bằng cách chạy file `bash orl_init.sh S` hoặc `bash ar_init.sh S`.
+    * Huấn luyện phương pháp SISA với `S` phân đoạn, `R` lát cắt và `e` kỷ nguyên cụ thể trong "container": `bash orl_train.sh S R e` hoặc `bash ar_train.sh S R e`.
+    * Kiểm thử `S` shard cụ thể: `bash orl_predict.sh S` hoặc `bash ar_predict.sh S`.
     * Tổng hợp các tham số đầu ra của từng phân đoạn và xuất ra kết quả trong file CSV: `bash orl_data.sh S R e` hoặc `bash ar_data.sh S R e` với `S` là số phân đoạn, `R` là số lát cắt và `e` là số kỷ nguyên. Nếu muốn đưa ra kết quả trong trường hợp `baseline` (tức là một phần của phân đoạn), chúng tôi sẽ chạy các file `bash orl_data_baseline.sh S R e` hoặc `bash ar_data_baseline.sh S R e`. Đối với bước này, chúng tôi muốn đưa ra thông tin về `S`, `R`, `e` nhằm phục vụ cho việc trực quan hóa dữ liệu nói riêng và báo cáo khóa luận nói chung. 
 
 ## Kết quả thực nghiệm
@@ -55,8 +55,8 @@ với s là số phân đoạn và r là số lát cắt
 
 với s là số phân đoạn và r là số lát cắt
 
-#### 3.1. Theo số lát cắt
-##### 3.1.1. Tập dữ liệu AR Face Database
+#### 3.2. Theo số lát cắt
+##### 3.2.1. Tập dữ liệu AR Face Database
 
 | Trường hợp  | Thời gian huấn luyện trung bình (s)  | Tốc độ huấn luyện trung bình |
 |    ---     | ---   | ---   |
@@ -66,7 +66,7 @@ với s là số phân đoạn và r là số lát cắt
 
 với s là số phân đoạn, r là số lát cắt và epoch là 10
 
-##### 3.1.2. Tập dữ liệu ORL
+##### 3.2.2. Tập dữ liệu ORL
 
 | Trường hợp  | Thời gian huấn luyện trung bình (s) | Tốc độ huấn luyện trung bình |
 |    ---     | ---   | ---   |
