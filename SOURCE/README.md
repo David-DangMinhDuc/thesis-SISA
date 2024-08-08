@@ -5,6 +5,7 @@
 - Tên đề tài: Nâng cao hiệu quả các mô hình nhận dạng khuôn mặt dùng SISA
 - Loại đề tài: Khóa luận tốt nghiệp
 - GVHD: PGS. TS. Lê Hoàng Thái
+- GVPB: TS. Bùi Tiến Lên
 - Sinh viên thực hiện:
 
 | Họ và tên  | MSSV  | Chuyên ngành  |
@@ -34,23 +35,47 @@
 ![Biểu đồ thể hiện độ chính xác dựa trên số lát cắt của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_slices.png)
 
 ### 3. Tốc độ huấn luyện
-#### 3.1. Tập dữ liệu AR Face Database
+#### 3.1. Theo số phân đoạn
+##### 3.1.1. Tập dữ liệu AR Face Database
 
-| Trường hợp  | Thời gian huấn luyện  | Tốc độ huấn luyện  |
+| Trường hợp  | Thời gian huấn luyện trung bình (s)  | Tốc độ huấn luyện trung bình |
 |    ---     | ---   | ---   |
-| Huấn luyện lại từ đầu (s = 1, r = 1)  | 238.89  | 1  |
-| s = 5, r = 1  | 188.06  | 1.27  |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 14.93  | 1  |
+| s = 5, r = 1  | 11.75  | 1.59  |
+| s = 10, r = 1  | 17.34  | 1.24  |
 
 với s là số phân đoạn và r là số lát cắt
-#### 3.2. Tập dữ liệu ORL
+##### 3.1.2. Tập dữ liệu ORL
 
-| Trường hợp  | Thời gian huấn luyện  | Tốc độ huấn luyện  |
+| Trường hợp  | Thời gian huấn luyện trung bình (s) | Tốc độ huấn luyện trung bình |
 |    ---     | ---   | ---   |
-| Huấn luyện lại từ đầu (s = 1, r = 1)  | 54.9  | 1  |
-| s = 5, r = 1  | 52.42  | 1.05  |
-| s = 10, r = 1  | 56.89  | 0.97  |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 13.73  | 1  |
+| s = 5, r = 1  | 13.11  | 1.12  |
+| s = 10, r = 1  | 14.42  | 1.02  |
 
 với s là số phân đoạn và r là số lát cắt
+
+#### 3.1. Theo số lát cắt
+##### 3.1.1. Tập dữ liệu AR Face Database
+
+| Trường hợp  | Thời gian huấn luyện trung bình (s)  | Tốc độ huấn luyện trung bình |
+|    ---     | ---   | ---   |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 6.23  | 1  |
+| s = 5, r = 1  | 4.56  | 1.85  |
+| s = 5, r = 2  | 3.48  | 2.78  |
+
+với s là số phân đoạn, r là số lát cắt và epoch là 10
+
+##### 3.1.2. Tập dữ liệu ORL
+
+| Trường hợp  | Thời gian huấn luyện trung bình (s) | Tốc độ huấn luyện trung bình |
+|    ---     | ---   | ---   |
+| Huấn luyện lại từ đầu (s = 1, r = 1)  | 13.73  | 1  |
+| s = 5, r = 1  | 13.11  | 1.12  |
+| s = 5, r = 2  | 7.75  | 1.83  |
+| s = 5, r = 3  | 6.78  | 2.04  |
+
+với s là số phân đoạn, r là số lát cắt và epoch là 30
 
 ## Nguồn tham khảo
 - Các bài báo tham khảo được trình bày trong báo cáo
