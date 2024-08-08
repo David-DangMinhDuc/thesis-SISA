@@ -2,19 +2,19 @@
 
 ## Thông tin đề tài
 
-- Tên đề tài: Nâng cao hiệu quả các mô hình nhận dạng khuôn mặt dùng SISA
-- Loại đề tài: Khóa luận tốt nghiệp
-- Giảng viên hướng dẫn: PGS. TS. Lê Hoàng Thái
-- Giảng viên phản biện: TS. Bùi Tiến Lên
-- Sinh viên thực hiện:
+- ***Tên đề tài***: Nâng cao hiệu quả các mô hình nhận dạng khuôn mặt dùng SISA
+- ***Loại đề tài***: Khóa luận tốt nghiệp
+- ***Giảng viên hướng dẫn***: PGS. TS. Lê Hoàng Thái
+- ***Giảng viên phản biện***: TS. Bùi Tiến Lên
+- ***Sinh viên thực hiện***:
 
-| Họ và tên  | MSSV  | Chuyên ngành  |
+| ***Họ và tên***  | ***MSSV***  | ***Chuyên ngành***  |
 |    ---     | ---   | ---   |
 | Bùi Tiến Đạt  | 20127130  | Khoa học máy tính  |
 | Đặng Minh Đức  | 20127136  | Khoa học máy tính  |
 
-- Ngày bảo vệ - Hội động bảo vệ: 17/08/2024 - Hội đồng Khoa học máy tính 3
-- Địa điểm bảo vệ: Phòng I44 - Trường Đại học Khoa học tự nhiên, ĐHQG-HCM
+- ***Ngày bảo vệ - Hội động bảo vệ***: 17/08/2024 - Hội đồng Khoa học máy tính 3
+- ***Địa điểm bảo vệ***: Phòng I44 - Trường Đại học Khoa học tự nhiên, ĐHQG-HCM
 
 ## Cách chạy code trong đề tài
 
