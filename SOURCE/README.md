@@ -29,7 +29,7 @@
 
 ### 1. Kết quả thực nghiệm dựa trên số phân đoạn
 #### a. Thời gian huấn luyện và độ chính xác
-![Biểu đồ thể hiện thời gian huấn luyện và độ chính xác dựa trên phân đoạn của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_shards.png)
+![Biểu đồ thể hiện thời gian huấn luyện lại (thời gian phân tích) và độ chính xác dựa trên phân đoạn của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_base_shards.png)
 
 #### b. Số lượng ảnh khuôn mặt được huấn luyện lại
 ![Biểu đồ thể hiện số lượng ảnh khuôn mặt được huấn luyện lại dựa trên phân đoạn của hai tập dữ liệu AR Face Database và ORL](./vis_img/plot_ret_pts.png)
@@ -41,7 +41,7 @@
 #### 3.1. Theo số phân đoạn
 ##### 3.1.1. Tập dữ liệu AR Face Database
 
-| Trường hợp  | Thời gian huấn luyện trung bình (s)  | Tốc độ huấn luyện trung bình |
+| Trường hợp  | Thời gian huấn luyện lại trung bình (s)  | Tốc độ huấn luyện lại trung bình |
 |    ---     | ---   | ---   |
 | Huấn luyện lại từ đầu (s = 1, r = 1)  | 14.93  | 1  |
 | s = 5, r = 1  | 11.75  | 1.59  |
@@ -50,7 +50,7 @@
 với s là số phân đoạn và r là số lát cắt
 ##### 3.1.2. Tập dữ liệu ORL
 
-| Trường hợp  | Thời gian huấn luyện trung bình (s) | Tốc độ huấn luyện trung bình |
+| Trường hợp  | Thời gian huấn luyện lại trung bình (s) | Tốc độ huấn luyện lại trung bình |
 |    ---     | ---   | ---   |
 | Huấn luyện lại từ đầu (s = 1, r = 1)  | 13.73  | 1  |
 | s = 5, r = 1  | 13.11  | 1.12  |
@@ -61,7 +61,7 @@ với s là số phân đoạn và r là số lát cắt
 #### 3.2. Theo số lát cắt
 ##### 3.2.1. Tập dữ liệu AR Face Database
 
-| Trường hợp  | Thời gian huấn luyện trung bình (s)  | Tốc độ huấn luyện trung bình |
+| Trường hợp  | Thời gian huấn luyện lại trung bình (s)  | Tốc độ huấn luyện lại trung bình |
 |    ---     | ---   | ---   |
 | Huấn luyện lại từ đầu (s = 1, r = 1)  | 6.23  | 1  |
 | s = 5, r = 1  | 4.56  | 1.85  |
@@ -71,7 +71,7 @@ với s là số phân đoạn, r là số lát cắt và epoch là 10
 
 ##### 3.2.2. Tập dữ liệu ORL
 
-| Trường hợp  | Thời gian huấn luyện trung bình (s) | Tốc độ huấn luyện trung bình |
+| Trường hợp  | Thời gian huấn luyện lại trung bình (s) | Tốc độ huấn luyện lại trung bình |
 |    ---     | ---   | ---   |
 | Huấn luyện lại từ đầu (s = 1, r = 1)  | 13.73  | 1  |
 | s = 5, r = 1  | 13.11  | 1.12  |
